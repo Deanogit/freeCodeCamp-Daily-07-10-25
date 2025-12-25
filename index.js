@@ -18,13 +18,16 @@
 function findLandingSpot(matrix) {
   // console.log(matrix)
 
+  // really big number to start
   let minDanger = Infinity;
+
+  // result [row, col]
   let bestSpot = [];
 
   // find the zero
   for (let r = 0; r < matrix.length; r++) {
     for (let c = 0; c < matrix[r].length; c++) {
-      console.log(matrix[r][c]);
+      // console.log(matrix[r][c]);
       if (matrix[r][c] === 0) {
         console.log('Do something');
 
@@ -33,10 +36,13 @@ function findLandingSpot(matrix) {
         if (r > 0) danger += matrix[r - 1][c]; // up
         if (r < matrix.length - 1) danger += matrix[r + 1][c]; // down
         if (c > 0) danger += matrix[r][c - 1]; // left
-        if (c < matrix[r].length - 1) danger += matrix[r][c + 1];
+        if (c < matrix[r].length - 1) danger += matrix[r][c + 1]; // right
 
+        // check danger is lower than big number
         if (danger < minDanger) {
+          // replace minDanger with lowest danger
           minDanger = danger;
+          // update bestSpot to hold row and col of lowest danger
           bestSpot = [r, c];
         }
 
