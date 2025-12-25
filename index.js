@@ -14,3 +14,22 @@
 //   [2, 0]
 // ]
 // Return [0, 1], the indices for the 0 in the first array.
+
+function findLandingSpot(matrix) {
+  console.log(matrix);
+
+  const avArr = [];
+
+  // find the zero
+  for (const x of matrix) {
+    // console.log(x.length)
+    for (const y of x) {
+      console.log(y);
+    }
+  }
+
+  // with the lowest risk neighbours
+
+  // take the average of the array
+  return matrix;
+}
