@@ -16,20 +16,48 @@
 // Return [0, 1], the indices for the 0 in the first array.
 
 function findLandingSpot(matrix) {
-  console.log(matrix);
+  // console.log(matrix)
 
-  const avArr = [];
+  let minDanger = Infinity;
+  let bestSpot = [];
 
   // find the zero
-  for (const x of matrix) {
-    // console.log(x.length)
-    for (const y of x) {
-      console.log(y);
+  for (let r = 0; r < matrix.length; r++) {
+    for (let c = 0; c < matrix[r].length; c++) {
+      console.log(matrix[r][c]);
+      if (matrix[r][c] === 0) {
+        console.log('Do something');
+
+        let danger = 0;
+
+        if (r > 0) danger += matrix[r - 1][c]; // up
+        if (r < matrix.length - 1) danger += matrix[r + 1][c]; // down
+        if (c > 0) danger += matrix[r][c - 1]; // left
+        if (c < matrix[r].length - 1) danger += matrix[r][c + 1];
+
+        if (danger < minDanger) {
+          minDanger = danger;
+          bestSpot = [r, c];
+        }
+
+        // this breaks on edges/corners
+        // sum = matrix[r-1][c] + matrix[r+1][c] + matrix[r][c-1] + matrix[r][c+1]
+      }
     }
+    // console.log(sum)
   }
+
+  // for (const x of matrix) {
+  // console.log(x.length)
+  //  for (const y of x) {
+  //   console.log(y)
+  // }
+
+  //}
 
   // with the lowest risk neighbours
 
   // take the average of the array
-  return matrix;
+  // return matrix;
+  return bestSpot;
 }
